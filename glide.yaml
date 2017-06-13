@@ -1,3 +1,4 @@
 package: github.com/mizoguche/go-hatebu
 import:
 - package: github.com/mitchellh/cli
+- package: github.com/armon/go-radix
