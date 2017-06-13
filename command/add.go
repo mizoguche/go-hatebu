@@ -1,4 +1,4 @@
-package hatebu
+package command
 
 type AddBookmarkCommand struct {
 }

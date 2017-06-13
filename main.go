@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/mitchellh/cli"
-	"github.com/mizoguche/go-hatebu/hatebu"
+	"github.com/mizoguche/go-hatebu/command"
 )
 
 func main() {
@@ -18,7 +18,7 @@ func Run(args []string) int {
 	c.Args = args[1:]
 	c.Commands = map[string]cli.CommandFactory{
 		"add": func() (cli.Command, error) {
-			return &hatebu.AddBookmarkCommand{}, nil
+			return &command.AddBookmarkCommand{}, nil
 		},
 	}
 
