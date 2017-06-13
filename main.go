@@ -14,7 +14,7 @@ func main() {
 
 // Run command
 func Run(args []string) int {
-	c := cli.NewCLI("go-gatevy", "0.1.0")
+	c := cli.NewCLI("go-hatebu", "0.1.0")
 	c.Args = args[1:]
 	c.Commands = map[string]cli.CommandFactory{
 		"add": func() (cli.Command, error) {
