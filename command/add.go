@@ -1,5 +1,7 @@
 package command
 
+import "github.com/mizoguche/go-hatebu/hatebu"
+
 type AddBookmarkCommand struct {
 }
 
@@ -12,6 +14,6 @@ func (c *AddBookmarkCommand) Help() string {
 }
 
 func (c *AddBookmarkCommand) Run(args []string) int {
-	// TODO: Implement
+	hatebu.Add("", "")
 	return 0
 }
