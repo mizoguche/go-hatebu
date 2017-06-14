@@ -3,45 +3,48 @@ package hatebu
 import (
 	"fmt"
 	"io/ioutil"
-	"log"
-
-	"github.com/garyburd/go-oauth/oauth"
 )
 
-func Add(url string, comment string) {
-	// http://nasust.hatenablog.com/entry/2016/12/17/111125
-	oauthClient := &oauth.Client{
-		Credentials: oauth.Credentials{
-			Token:  "XXXXXXXXXXXXXX",
-			Secret: "XXXXXXXXXXXXXX",
-		},
-		TemporaryCredentialRequestURI: "https://www.hatena.com/oauth/initiate",
-		ResourceOwnerAuthorizationURI: "https://www.hatena.com/oauth/authorize",
-		TokenRequestURI:               "https://www.hatena.com/oauth/token",
+type AddRequest struct {
+	URL          string
+	Comment      string
+	PostTwitter  bool
+	PostFacebook bool
+	PostEvernote bool
+}
+
+// Add bookmark
+func Add(req AddRequest) int {
+
+	form := map[string][]string{
+		"url":     {req.URL},
+		"comment": {req.Comment},
 	}
 
-	accessToken := oauth.Credentials{
-		Token:  "XXXXXXXXXXXXXXX",
-		Secret: "XXXXXXXXXXXXXXX",
+	if req.PostTwitter {
+		form["post_twitter"] = []string{"true"}
 	}
 
-	response, err := oauthClient.Get(nil, &accessToken, "https://blog.hatena.ne.jp/nasust/nasust.hatenablog.com/atom", nil)
+	if req.PostFacebook {
+		form["post_facebook"] = []string{"true"}
+	}
+
+	if req.PostEvernote {
+		form["post_evernote"] = []string{"true"}
+	}
+
+	c := &client{}
+	response, err := c.post("http://api.b.hatena.ne.jp/1/my/bookmark", form)
 
 	if err != nil {
-		log.Fatal("Get Err: ", err)
-		panic(-1)
+		fmt.Printf("http request error: %v", err)
+		return -1
 	}
 
-	fmt.Println("Status: ", response.Status)
-
-	bodyData, err := ioutil.ReadAll(response.Body)
-
-	if err != nil {
-		log.Fatal("Read Err:", err)
-		panic(-1)
+	if _, err := ioutil.ReadAll(response.Body); err != nil {
+		fmt.Printf("read body error: %v", err)
+		return -1
 	}
 
-	bodyStr := string(bodyData)
-
-	fmt.Println(bodyStr)
+	return 0
 }
