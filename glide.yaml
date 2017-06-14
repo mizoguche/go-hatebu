@@ -2,3 +2,6 @@ package: github.com/mizoguche/go-hatebu
 import:
 - package: github.com/mitchellh/cli
 - package: github.com/armon/go-radix
+- package: github.com/garyburd/go-oauth
+  subpackages:
+  - oauth

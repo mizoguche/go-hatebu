@@ -1,16 +1,42 @@
-hash: 0c5d8498b3ae9fc75f4d1504d1c86954c65e111045b786708ef872360246477d
-updated: 2017-06-13T22:52:52.205415217+09:00
+hash: 9cb5761c620fd95c460d5f3741a4c4d1fd05a4c63e78ddcfbc08f796a5648d35
+updated: 2017-06-14T12:29:26.612071201+09:00
 imports:
 - name: github.com/armon/go-radix
   version: 4239b77079c7b5d1243b7b4736304ce8ddb6f0f2
 - name: github.com/bgentry/speakeasy
   version: 4aabc24848ce5fd31929f7d1e4ea74d3709c14cd
+- name: github.com/garyburd/go-oauth
+  version: d9dbc37b1a7acf4923050e614fc7861e3fbf42f9
+  subpackages:
+  - oauth
+- name: github.com/golang/protobuf
+  version: e325f446bebc2998605911c0a2650d9920361d4a
+  subpackages:
+  - proto
 - name: github.com/mattn/go-isatty
   version: fc9e8d8ef48496124e79ae0df75490096eccf6fe
 - name: github.com/mitchellh/cli
   version: b481eac70eea3ad671b7c360a013f89bb759b252
+- name: golang.org/x/net
+  version: dfe83d419c9403b40b19d08cdba2afec27b002f7
+  subpackages:
+  - context
+- name: golang.org/x/oauth2
+  version: f047394b6d14284165300fd82dad67edb3a4d7f6
+  subpackages:
+  - internal
 - name: golang.org/x/sys
   version: 0b25a408a50076fbbcae6b7ac0ea5fbb0b085e79
   subpackages:
   - unix
+- name: google.golang.org/appengine
+  version: a2f4131514e563cedfdb6e7d267df9ad48591e93
+  subpackages:
+  - urlfetch
+  - internal
+  - internal/urlfetch
+  - internal/base
+  - internal/datastore
+  - internal/log
+  - internal/remote_api
 testImports: []
